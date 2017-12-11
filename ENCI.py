@@ -5,6 +5,7 @@ Shoubo (shoubo.hu AT gmail.com)
 12/12/2017
 USAGE:
   direction = cd_enci(XY, al)
+  direction = cd_enci_plingam(XY, al)
  
 INPUT:
   XY          - input data, list of numpy arrays. rows of each array are 
