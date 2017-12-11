@@ -9,9 +9,9 @@ def expe_dcon(N_grp):
 	N_grp - number of groups of the synthetic data
 	"""
 	
-	# generate synthetic data groups and save in list XY
 	XY = []
 	for i in range(0, N_grp):
+	# generate synthetic data groups and save in list XY
 		sample_size = choice(np.arange(40, 50))
 		xy = Generate_XYmltp(np.random.randint(7), sample_size)
 
@@ -27,7 +27,7 @@ def Generate_XY(label, sample_size):
 	INPUT
 		label	- type of the causal mechanism ( 0 - 6)
 	OUTPUT
-		xy		- a data group in a numpy array ( n * (dx + dy) ) 
+		xy	- a data group in a numpy array ( n * (dx + dy) ) 
 	"""
 	ncoeff = 1
 	
@@ -78,7 +78,7 @@ def Generate_XYmltp(label, sample_size):
 	INPUT
 		label	- type of the causal mechanism ( 0 - 6)
 	OUTPUT
-		xy		- a data group in a numpy array ( n * (dx + dy) ) 
+		xy	- a data group in a numpy array ( n * (dx + dy) ) 
 	"""
 	ncoeff = 1
 	
