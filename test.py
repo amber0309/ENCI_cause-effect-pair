@@ -124,4 +124,4 @@ def Generate_XYmltp(label, sample_size):
 	return xy
 
 if __name__ == '__main__':
-	expe_dcon(50)
+	expe_dcon(100)
