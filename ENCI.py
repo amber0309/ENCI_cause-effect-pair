@@ -142,10 +142,10 @@ def pre_dlt(XY, nsamp = 500):
 	"""
 	compute the universal kernel width
 	INPUT
-		XY		- list of numpy arrays ( n * (dx + dy) )
+		XY	- list of numpy arrays ( n * (dx + dy) )
 		nsamp	- number of obs used to estimate kernel width
 	OUTPUT
-		dlt		- list of kernel width of each variable
+		dlt	- list of kernel width of each variable
 	"""
 	dim = XY[0].shape[1]
 	feature_type = ['numeric']
@@ -165,7 +165,7 @@ def pre_tensor(XY):
 	"""
 	compute $\tau_x$ and $\tau_y$ of each group
 	INPUT
-		XY				- list of numpy arrays, each array is a n by (dx + dy) matrix
+		XY		- list of numpy arrays, each array is a n by (dx + dy) matrix
 	OUTPUT
 		tau_x, tau_y	- two numpy arrays corresponds to $\tau_x$ and $\tau_y$ of each group
 	"""
@@ -223,9 +223,13 @@ def pre_tensor(XY):
 def cd_enci(XY, al = 0.05):
 	"""
 	infer causal direction using independence test (HSIC)
+	
+	(Gretton, A., Fukumizu, K., Teo, C. H., Song, L., Schölkopf, B., & Smola, A. J. (2008). 
+	A kernel statistical test of independence. In Advances in neural information processing systems (pp. 585-592).)
+	
 	INPUT
-		XY		- list of numpy arrays ( n * (dx + dy) )
-		al		- significance level of HSIC test
+		XY	- list of numpy arrays ( n * (dx + dy) )
+		al	- significance level of HSIC test
 	OUTPUT
 		1 (-1)	- X causes Y (Y causes X)
 	"""
@@ -267,6 +271,11 @@ def kurtosis(X):
 def cd_enci_plingam(XY):
 	"""
 	infer causal direction using pairwiseLiNGAM
+	
+	Hyvärinen, A., & Smith, S. M. (2013). Pairwise likelihood ratios 
+	for estimation of non-Gaussian structural equation models. Journal 
+	of Machine Learning Research, 14(Jan), 111-152.
+	
 	INPUT
 		XY		- list of numpy arrays ( n * (dx + dy) )
 	OUTPUT
