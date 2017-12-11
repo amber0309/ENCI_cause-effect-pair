@@ -6,16 +6,16 @@ Gretton, A., Fukumizu, K., Teo, C. H., Song, L., Scholkopf, B.,
 & Smola, A. J. (2007). A kernel statistical test of independence. 
 In Advances in neural information processing systems (pp. 585-592).
 
-Shoubo
+Shoubo (shoubo.hu AT gmail.com)
 09/11/2016
 
 Inputs:
-X 			n by dim_x matrix
-Y 			n by dim_y matrix
-alph 			level of test
+X 		n by dim_x matrix
+Y 		n by dim_y matrix
+alph 		level of test
 
 Outputs:
-testStat		test statistics
+testStat	test statistics
 thresh		test threshold for level alpha test
 """
 
