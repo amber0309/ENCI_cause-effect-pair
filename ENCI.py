@@ -7,13 +7,13 @@ USAGE:
   direction = cd_enci(XY, al)
  
 INPUT:
-  XY         - input data, list of numpy arrays. rows of each array are 
+  XY          - input data, list of numpy arrays. rows of each array are 
                i.i.d. samples, column of each array represent variables
-  al - significance level of HSIC independence test
+  al          - significance level of HSIC independence test
  
 OUTPUT: 
-  direction   - 1,  X causes Y
-                -1, Y causes X
+  direction   -  1,  X causes Y
+                -1,  Y causes X
  
 """
 from __future__ import division
