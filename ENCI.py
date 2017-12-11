@@ -204,7 +204,7 @@ def pre_tensor(XY):
 
 def cd_enci(XY, al = 0.05):
 	"""
-	infer causal direction using $\tau_x$ and $\tau_y$
+	infer causal direction using independence test (HSIC)
 	INPUT
 		XY		- list of numpy arrays ( n * (dx + dy) )
 		al		- significance level of HSIC test
@@ -229,12 +229,42 @@ def cd_enci(XY, al = 0.05):
 	y2x = stat_yx / thre_yx
 
 	if x2y < y2x:
-		print('x2y =' + str(x2y))
+		print('x2y = ' + str(x2y))
 		print('y2x = ' + str(y2x))
 		print('The causal direction is X --> Y.\n')
 		return 1
 	else:
-		print('x2y =' + str(x2y))
+		print('x2y = ' + str(x2y))
 		print('y2x = ' + str(y2x))
+		print('The causal direction is Y --> X.\n')
+		return -1
+
+def kurtosis(X):
+	s = np.std(X)
+	m = np.mean(X)
+	k = np.mean((X-m)**4)/(s**4)
+
+	return k
+
+def cd_enci_plingam(XY):
+	"""
+	infer causal direction using pairwiseLiNGAM
+	INPUT
+		XY		- list of numpy arrays ( n * (dx + dy) )
+	OUTPUT
+		1 (-1)	- X causes Y (Y causes X)
+	"""
+
+	[tau_x, tau_y] = pre_tensor(XY)
+
+	rho = np.mean(tau_x * tau_y) * np.sign(kurtosis(tau_x))
+	R = rho * np.mean(tau_x**3 * tau_y - tau_x * tau_y**3)
+
+	if R > 0:
+		print('R = ' + str(R))
+		print('The causal direction is X --> Y.\n')
+		return 1
+	else:
+		print('R = ' + str(R))
 		print('The causal direction is Y --> X.\n')
 		return -1
