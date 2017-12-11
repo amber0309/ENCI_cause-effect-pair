@@ -1,3 +1,21 @@
+"""
+ENCI (Embedding-based Nonstationary Causal Model Inference) python implementation
+(Anaconda3 5.0.1 64-bit for python 3.6.3 on Windows 10)
+Shoubo (shoubo.hu AT gmail.com)
+12/12/2017
+USAGE:
+  direction = cd_enci(XY, al)
+ 
+INPUT:
+  XY         - input data, list of numpy arrays. rows of each array are 
+               i.i.d. samples, column of each array represent variables
+  al - significance level of HSIC independence test
+ 
+OUTPUT: 
+  direction   - 1,  X causes Y
+                -1, Y causes X
+ 
+"""
 from __future__ import division
 import numpy as np
 from random import choice
