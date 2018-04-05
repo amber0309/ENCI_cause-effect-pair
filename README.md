@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-We test the code using **Anaconda3 5.0.1 64-bit for python 3.6.3** on windows. Any later version should still work perfectly. The download page of Anaconda is <https://www.anaconda.com/download/>.
+We test the code using **Anaconda3 5.0.1 64-bit for python 3.6.3** on windows. Any later version should still work perfectly. The download page of Anaconda is [here](https://www.anaconda.com/download/).
 
 ## Running the tests
 
