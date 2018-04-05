@@ -7,6 +7,9 @@ Python code of causal inferene algorithm for **cause-effect pairs** proposed in 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
+- NumPy
+- SciPy
+- scikit-learn
 
 We test the code using **Anaconda3 5.0.1 64-bit for python 3.6.3** on windows. Any later version should still work perfectly. The download page of Anaconda is [here](https://www.anaconda.com/download/).
 
