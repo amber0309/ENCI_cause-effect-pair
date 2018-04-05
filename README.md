@@ -1,4 +1,4 @@
-# Embedding-based Nonstationary Causal Model Inference
+# Kernel Embedding-based Nonstationary Causal Model Inference
 
 Python code of causal inferene algorithm for cause-effect pairs proposed in paper *A Kernel Embedding–Based Approach for Nonstationary Causal Model Inference* (ENCI).
 
