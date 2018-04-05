@@ -14,7 +14,7 @@ We test the code using **Anaconda3 5.0.1 64-bit for python 3.6.3** on windows. A
 
 After all required packages are installed, you can run *test.py* to see whether ENCI could work normally.
 
-The test is consists of two parts:
+The test code does the following:
 1. it generate 100 groups of synthetic data and put them in a list. 
 (Each group is an L-by-2 *numpy array* where L is the number of points ranging from 40 to 49. The first column of each array is the cause and the other column being the effect.)
 2. ENCI is applied on the generated data set to infer the causal direction.
