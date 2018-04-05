@@ -52,8 +52,8 @@ Output of function **cd_enci()**
 
 ## Authors
 
-* **Shoubo Hu** - [GitHub](https://github.com/amber0309)
-* **Zhitang Chen**
+* **Shoubo Hu** - shoubo.sub@gmail.com
+* **Zhitang Chen** - chenzhitang2@huawei.com
 
 See also the list of [contributors](https://github.com/amber0309/ENCI_cause-effect-pair/contributors) who participated in this project.
 
