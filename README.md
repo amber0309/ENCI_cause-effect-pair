@@ -12,7 +12,7 @@ We test the code using **Anaconda3 5.0.1 64-bit for python 3.6.3** on windows. A
 
 ## Running the tests
 
-After all required packages are installed, you can run *test.py* to see whether ENCI could work normally.
+After all required packages are installed, you can run *test.py* to see whether **ENCI** could work normally.
 
 The test code does the following:
 1. it generate 100 groups of synthetic data and put them in a list. 
@@ -20,17 +20,17 @@ The test code does the following:
 2. ENCI is applied on the generated data set to infer the causal direction.
 
 
-## Apply on your data
+## Apply **ENCI** on your data
 
 ### Usage
 
-Import ENCI using
+Import **ENCI** using
 
 ```
 from ENCI import cd_enci
 ```
 
-Apply ENCI on your data
+Apply **ENCI** on your data
 
 ```
 direction = cd_enci(XY)
