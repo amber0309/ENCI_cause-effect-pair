@@ -1,4 +1,4 @@
-function order = ENCI_pairs(XY)
+function order = ENCI_pair(XY)
 %{
 Input (1 or 2 input arguments)
 XY      - the cell array of all groups of data, each group is a matrix

@@ -26,18 +26,18 @@ The test does the following:
 Change your current folder to "ENCI_MATLAB/" and use the following commands
 
 ```
-order = ENCI_pairs(X)
+order = ENCI_pair(X)
 ```
 
 ### Description
 
-Input of function **ENCI_pairs()**
+Input of function **ENCI_pair()**
 
 | Argument  | Description  |
 |---|---|
 |X | Cell array of matrix. Rows of each matrix represent i.i.d. samples, each column corresponds to a variable in the cause-effect pair.|
 
-Output of function **ENCI_pairs()**
+Output of function **ENCI_pair()**
 
 | Argument  | Description  |
 |---|---|
