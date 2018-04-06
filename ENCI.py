@@ -34,7 +34,6 @@ def pre_dlt(XY, nsamp = 500):
 		dlt	- list of kernel width of each variable
 	"""
 	dim = XY[0].shape[1]
-	feature_type = ['numeric']
 
 	xyall = np.concatenate( XY, axis=0 )
 
