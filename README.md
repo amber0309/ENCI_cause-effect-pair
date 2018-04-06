@@ -15,7 +15,7 @@ We test the code using **Anaconda3 5.0.1 64-bit for python 3.6.3** on windows. A
 
 ## Running the tests
 
-After all required packages are installed, you can run *test.py* to see whether **ENCI** could work normally.
+After installing all required packages, you can run *test.py* to see whether **ENCI** could work normally.
 
 The test code does the following:
 1. it generate 100 groups of synthetic data and put them in a list. 
