@@ -22,122 +22,7 @@ import numpy as np
 from random import choice
 from HSIC import hsic_gam, rbf_dot
 from sklearn import linear_model
-
-class KEMDOPERATION:
-
-	@staticmethod
-	def kernel_embedding_K(dist, theta, delta):
-		Len = len(dist)
-		
-		m,n = dist[0].shape 
-		
-		y = np.ones((m,n), dtype = float)
-		
-		for i in range(0, Len):
-			
-			d = dist[i]
-			l = delta[0,i]
-			a = 0.5
-			y5 = np.exp(-d**2/(l)**2)
-		
-			y = y * y5
-			
-		y = theta * y
-		
-		return y 
-		
-	@staticmethod
-	def kernel_embedding_D(data, data_sr, feature_type):
-	   
-		len1  = len(data)
-		len2 = len(data_sr)
-		
-		xx1 = np.transpose(data)
-		xx2 = np.transpose(data_sr)
-		
-		temp = []
-		
-		for x in xx1:
-			temp.append(x.tolist())
-		xx1 = temp 
-		
-		temp = []
-		for x in xx2: 
-		   temp.append(x.tolist())
-		xx2 = temp 
-		
-		
-		num_of_feature = len(feature_type)
-		K = []
-		#print num_of_feature        
-		for i in range(0, num_of_feature):
-			K_k = np.zeros((len1, len2), dtype = float)
-			K.append(K_k)
-		
-		dist_x1_x2 = 0.0 
-		
-		for i in range(0, len1):
-			for j in range(0,len2):
-				for k in range(0, num_of_feature):
-				
-					Type = feature_type[k]
-					x1 = xx1[k]
-					x2 = xx2[k]
-				
-					if Type == 'numeric':
-						dist_x1_x2 = abs(x1[i] - x2[j])# ** 2 
-					elif Type == 'Categorical':
-						dist_x1_x2 = float(x1[i]==x2[j])
-					else:
-						dist_x1_x2 = 0.0 
-				
-					K[k][i][j] = dist_x1_x2 
-		return K 
-		
-	@staticmethod
-	def median_dist(S1, S2, feature_type):
-		L1 = len(S1[:,0])
-		L2 = len(S2[:,0])
-		num_of_feature = len(feature_type)
-		MM = np.zeros((1, num_of_feature), dtype = float)
-		for t in range(0, num_of_feature):
-			M = []
-			for i in range(0, L2):
-				for p in range(0, L1):
-				
-					if feature_type[t] == 'numeric':
-						d = np.abs(S1[p,t] - S2[i,t])
-					elif feature_type == 'Categorical':
-						d = float(S1[p,t] == S2[i,t])
-					else: 
-						d = 0.0 
-				
-					M.append(d)
-			MM[0,t] = np.median(M)
-		return MM
-		
-	@staticmethod
-	def mean_dist(S1, S2, feature_type):
-		
-		L = len(S1[:,0])
-		num_of_feature = len(feature_type)
-		MM = np.zeros((1, num_of_feature), dtype = float)
-		for t in range(0, num_of_feature):
-			M = []
-			for i in range(0, L):
-				for p in range(0, i):
-				
-					if feature_type[t] == 'numeric':
-						d = np.abs(S1[p,t] - S2[i,t])
-					elif feature_type == 'Categorical':
-						d = float(S1[p,t] == S2[i,t])
-					else: 
-						d = 0.0 
-				
-					M.append(d)
-			MM[0,t] = np.mean(M)
-		return MM
-
+from kernel_cons import KEMDOPERATION
 
 def pre_dlt(XY, nsamp = 500):
 	"""
@@ -157,7 +42,7 @@ def pre_dlt(XY, nsamp = 500):
 
 	dlt = []
 	for j in range(0, dim):
-		dlt.append(KEMDOPERATION.median_dist(xyall[0:nsamp,j].reshape(-1,1), xyall[0:nsamp,j].reshape(-1,1), feature_type))
+		dlt.append(KEMDOPERATION.median_dist_scipy(xyall[0:nsamp,j].reshape(-1,1), xyall[0:nsamp,j].reshape(-1,1)))
 
 	return dlt
 
@@ -191,8 +76,8 @@ def pre_tensor(XY):
 
 		H = np.identity(L) - np.ones((L)) / L
 
-		d_x = KEMDOPERATION.kernel_embedding_D(x, x, feature_type)
-		d_y = KEMDOPERATION.kernel_embedding_D(y, y, feature_type)
+		d_x = KEMDOPERATION.kernel_embedding_D_scipy(x, x)
+		d_y = KEMDOPERATION.kernel_embedding_D_scipy(y, y)
 
 		k_x_i = KEMDOPERATION.kernel_embedding_K(d_x, 1, dlt[0])
 		k_y_i = KEMDOPERATION.kernel_embedding_K(d_y, 1, dlt[1])
@@ -225,7 +110,7 @@ def cd_enci(XY, al = 0.05):
 	"""
 	infer causal direction using independence test (HSIC)
 	
-	(Gretton, A., Fukumizu, K., Teo, C. H., Song, L., Schölkopf, B., & Smola, A. J. (2008). 
+	(Gretton, A., Fukumizu, K., Teo, C. H., Song, L., Scholkopf, B., & Smola, A. J. (2008). 
 	A kernel statistical test of independence. In Advances in neural information processing systems (pp. 585-592).)
 	
 	INPUT
@@ -273,7 +158,7 @@ def cd_enci_plingam(XY):
 	"""
 	infer causal direction using pairwiseLiNGAM
 	
-	Hyvärinen, A., & Smith, S. M. (2013). Pairwise likelihood ratios 
+	Hyvarinen, A., & Smith, S. M. (2013). Pairwise likelihood ratios 
 	for estimation of non-Gaussian structural equation models. Journal 
 	of Machine Learning Research, 14(Jan), 111-152.
 	
