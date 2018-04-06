@@ -1,6 +1,6 @@
 # Kernel Embedding-based Nonstationary Causal Model Inference
 
-Python code of causal inferene algorithm for **cause-effect pairs** proposed in paper *A Kernel Embedding–Based Approach for Nonstationary Causal Model Inference* (ENCI).
+Python code of causal inferene algorithm for **cause-effect pairs** proposed in paper [A Kernel Embedding–Based Approach for Nonstationary Causal Model Inference](https://www.mitpressjournals.org/doi/abs/10.1162/neco_a_01064) (ENCI).
 
 ## Getting Started
 
@@ -30,24 +30,24 @@ The test code does the following:
 Import **ENCI** using
 
 ```
-from ENCI import cd_enci
+from ENCI import ENCI_pair
 ```
 
 Apply **ENCI** on your data
 
 ```
-direction = cd_enci(XY)
+direction = ENCI_pair(XY)
 ```
 
 ### Description
 
-Input of function **cd_enci()**
+Input of function **ENCI_pair()**
 
 | Argument  | Description  |
 |---|---|
 |XY | List of numpy arrays with 2 columns and any number of rows. Rows of each array represent i.i.d. samples, each column corresponds to a variable in the cause-effect pair.|
 
-Output of function **cd_enci()**
+Output of function **ENCI_pair()**
 
 | Argument  | Description  |
 |---|---|

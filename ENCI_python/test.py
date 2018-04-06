@@ -1,7 +1,7 @@
 from __future__ import division
 import numpy as np
 from random import choice
-from ENCI import cd_enci, cd_enci_plingam
+from ENCI import ENCI_pair
 
 def expe_dcon(N_grp):
 	"""
@@ -18,7 +18,7 @@ def expe_dcon(N_grp):
 		XY.append(xy)
 
 	# conduct ENCI with HSIC measure on XY
-	order1 = cd_enci(XY)
+	order1 = ENCI_pair(XY)
 
 
 def Generate_XY(label, sample_size):

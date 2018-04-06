@@ -1,11 +1,12 @@
 """
 ENCI (Embedding-based Nonstationary Causal Model Inference) python implementation
 (Anaconda3 5.0.1 64-bit for python 3.6.3 on Windows 10)
-Shoubo (shoubo.hu AT gmail.com)
+
+Shoubo (shoubo.sub AT gmail.com)
 12/12/2017
+
 USAGE:
-  direction = cd_enci(XY, al)
-  direction = cd_enci_plingam(XY, al)
+  direction = ENCI_pair(XY, al)
  
 INPUT:
   XY          - input data, list of numpy arrays. rows of each array are 
@@ -15,6 +16,8 @@ INPUT:
 OUTPUT: 
   direction   -  1,  X causes Y
                 -1,  Y causes X
+                (denote the variable of the first 
+                column by X and the second by Y.)
  
 """
 from __future__ import division
@@ -56,7 +59,6 @@ def pre_tensor(XY):
 	"""
 	N_grp = len(XY)
 
-	feature_type = ['numeric']
 	Llist = []
 
 	for k in range(0, N_grp):
@@ -105,7 +107,7 @@ def pre_tensor(XY):
 	return (tau_x, tau_y)
 
 
-def cd_enci(XY, al = 0.05):
+def ENCI_pair(XY, al = 0.05):
 	"""
 	infer causal direction using independence test (HSIC)
 	
