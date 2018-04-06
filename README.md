@@ -39,8 +39,6 @@ Apply **ENCI** on your data
 direction = cd_enci(XY)
 ```
 
-### Notes
-
 Input of function **cd_enci()**
 
 | Argument  | Description  |
