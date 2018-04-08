@@ -55,8 +55,8 @@ Output of function **ENCI_pair()**
 
 ## Authors
 
-* **Shoubo Hu** - shoubo.sub@gmail.com
-* **Zhitang Chen** - chenzhitang2@huawei.com
+* **Shoubo Hu** - shoubo DOT sub AT gmail DOT com
+* **Zhitang Chen** - chenzhitang2 AT huawei DOT com
 
 See also the list of [contributors](https://github.com/amber0309/ENCI_cause-effect-pair/contributors) who participated in this project.
 
