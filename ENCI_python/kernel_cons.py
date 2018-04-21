@@ -1,6 +1,5 @@
 from __future__ import division
 import numpy as np
-from scipy.spatial.distance import pdist
 from scipy.spatial import distance_matrix
 
 class KEMDOPERATION:
@@ -120,7 +119,7 @@ class KEMDOPERATION:
 		for t in range(0, num_of_feature):
 			M = []
 			for i in range(0, L2):
-				for p in range(0, L1):
+				for p in range(0, i):
 				
 					if feature_type[t] == 'numeric':
 						d = np.abs(S1[p,t] - S2[i,t])
@@ -150,7 +149,7 @@ class KEMDOPERATION:
 			b = np.array(np.meshgrid(S1[:,t], S2[:,t])).T.reshape(-1,2)
 			abs_diff = abs(b[:,0] - b[:,1])
 			#c = abs_diff[abs_diff != 0]
-			MM[0,t] = np.median(abs_diff)
+			MM[0,t] = np.median(abs_diff[abs_diff != 0])
 		return MM
 
 	@staticmethod
@@ -171,9 +170,8 @@ class KEMDOPERATION:
 			y_i = S2[:,t].reshape(-1,1)
 			d_i = distance_matrix(x_i, y_i, p=1, threshold=1000000)
 			#c = abs_diff[abs_diff != 0]
-			MM[0,t] = np.median(d_i)
+			MM[0,t] = np.median(d_i[d_i != 0])
 		return MM
-
 
 	@staticmethod
 	def mean_dist(S1, S2, feature_type):
@@ -220,7 +218,7 @@ class KEMDOPERATION:
 			b = np.array(np.meshgrid(S1[:,t], S2[:,t])).T.reshape(-1,2)
 			abs_diff = abs(b[:,0] - b[:,1])
 			#c = abs_diff[abs_diff != 0]
-			MM[0,t] = np.mean(abs_diff)
+			MM[0,t] = np.mean(abs_diff[abs_diff != 0])
 		return MM
 
 	@staticmethod
@@ -241,5 +239,5 @@ class KEMDOPERATION:
 			y_i = S2[:,t].reshape(-1,1)
 			d_i = distance_matrix(x_i, y_i, p=1, threshold=1000000)
 			#c = abs_diff[abs_diff != 0]
-			MM[0,t] = np.mean(d_i)
+			MM[0,t] = np.mean(d_i[d_i != 0])
 		return MM
