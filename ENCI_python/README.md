@@ -29,13 +29,13 @@ The test code does the following:
 
 Import **ENCI** using
 
-```
+```python
 from ENCI import ENCI_pair
 ```
 
 Apply **ENCI** on your data
 
-```
+```python
 direction = ENCI_pair(XY)
 ```
 
